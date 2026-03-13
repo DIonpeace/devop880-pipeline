@@ -9,9 +9,9 @@ function App() {
           CI/CD Pipeline for React web app 
         </p>
         <p className="small">
-         written by pipat poltree 
+         written by Prompitchaya,Nathapong,Peeraphas,Pipat
         </p>
-        <h1>update by Mr.pipat poltree </h1>
+        <h1>update by 4 Nor Hor Klub </h1>
         <p>
           <a
             className="App-link"
