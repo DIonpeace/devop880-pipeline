@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const students = [
   { name: 'Prompitchaya Lertwattanakitti', id: '6630251377', role: 'Frontend Developer',  icon: '⚡' },
@@ -81,6 +81,13 @@ function ParticleCanvas() {
 /* ── Student card with 3-D tilt ──────────────────────── */
 function StudentCard({ student, index }) {
   const cardRef = useRef(null);
+  const [profileImg, setProfileImg] = useState(null);
+  const profileInputRef = useRef(null);
+
+  const handleProfileUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) setProfileImg(URL.createObjectURL(file));
+  };
 
   const handleMouseMove = (e) => {
     const card = cardRef.current;
@@ -105,9 +112,25 @@ function StudentCard({ student, index }) {
     >
       <span className="ku-num">#{String(index + 1).padStart(2, '0')}</span>
 
-      <div className="ku-avatar">
-        {student.name.charAt(0)}
+      <div
+        className="ku-avatar"
+        onClick={() => profileInputRef.current.click()}
+        title="คลิกเพื่อเปลี่ยนรูปโปรไฟล์"
+        style={{ cursor: 'pointer' }}
+      >
+        {profileImg
+          ? <img src={profileImg} alt={student.name} className="ku-avatar-img" />
+          : student.name.charAt(0)
+        }
         <span className="ku-avatar-ring" />
+        <span className="ku-upload-hint">📷</span>
+        <input
+          ref={profileInputRef}
+          type="file"
+          accept="image/*"
+          style={{ display: 'none' }}
+          onChange={handleProfileUpload}
+        />
       </div>
 
       <p className="ku-name">{student.name}</p>
@@ -124,6 +147,14 @@ function StudentCard({ student, index }) {
 
 /* ── Main App ─────────────────────────────────────────── */
 export default function App() {
+  const [logoImg, setLogoImg] = useState(null);
+  const logoInputRef = useRef(null);
+
+  const handleLogoUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) setLogoImg(URL.createObjectURL(file));
+  };
+
   return (
     <>
       {/* ── Google Fonts ── */}
@@ -353,6 +384,29 @@ export default function App() {
           background:rgba(255,255,255,.04);padding:4px 10px;border-radius:6px;display:inline-block;
         }
 
+        /* Upload hint overlay */
+        .ku-upload-hint {
+          position:absolute;border-radius:50%;
+          background:rgba(0,0,0,.55);
+          display:flex;align-items:center;justify-content:center;
+          font-size:1.2rem;opacity:0;
+          transition:opacity .3s;z-index:4;pointer-events:none;
+        }
+        .ku-logo-ring .ku-upload-hint { inset:2px; }
+        .ku-avatar .ku-upload-hint { inset:0; }
+        .ku-logo-ring:hover .ku-upload-hint,
+        .ku-avatar:hover .ku-upload-hint { opacity:1; }
+
+        /* Uploaded images */
+        .ku-logo-img {
+          position:relative;z-index:2;
+          width:80px;height:80px;border-radius:50%;object-fit:cover;
+        }
+        .ku-avatar-img {
+          position:absolute;inset:0;
+          width:100%;height:100%;border-radius:50%;object-fit:cover;z-index:1;
+        }
+
         /* Footer */
         .ku-footer {
           margin-top:60px;text-align:center;color:var(--muted);font-size:.8rem;
@@ -371,8 +425,24 @@ export default function App() {
 
       <div className="ku-wrapper">
         <header className="ku-header">
-          <div className="ku-logo-ring">
-            <span className="ku-logo-emoji">🌿</span>
+          <div
+            className="ku-logo-ring"
+            onClick={() => logoInputRef.current.click()}
+            title="คลิกเพื่อเปลี่ยนโลโก้"
+            style={{ cursor: 'pointer' }}
+          >
+            {logoImg
+              ? <img src={logoImg} alt="Logo" className="ku-logo-img" />
+              : <span className="ku-logo-emoji">🌿</span>
+            }
+            <span className="ku-upload-hint">📷</span>
+            <input
+              ref={logoInputRef}
+              type="file"
+              accept="image/*"
+              style={{ display: 'none' }}
+              onChange={handleLogoUpload}
+            />
           </div>
           <div className="ku-badge">Kasetsart University</div>
           <h1 className="ku-h1">Student Dev Team</h1>
