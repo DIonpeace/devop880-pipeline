@@ -4,7 +4,7 @@ const students = [
   { name: 'Prompitchaya Lertwattanakitti', id: '6630251377', role: 'Frontend Developer',  icon: '⚡', image: '/ptc.png' },
   { name: 'Natthapong Chanabun',           id: '6630251113', role: 'Backend Developer',   icon: '🛠', image: '/dy.png' },
   { name: 'Peeraphas Aitha',               id: '6630251393', role: 'DevOps Engineer',     icon: '🔧', image: '/Time.png' },
-  { name: 'Pipat Poltree',                 id: '6630251172', role: 'Full Stack Developer', icon: '🚀', image: '/peach.png' },
+  { name: 'Pipat Poltree',                 id: '6630251172', role: 'Software Tester', icon: '🚀', image: '/peach.png' },
 ];
 
 /* ── Particle canvas ─────────────────────────────────── */
@@ -262,7 +262,7 @@ export default function App() {
         /* Grid */
         .ku-grid-cards {
           display:grid;
-          grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+          grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
           gap:20px; margin-top:8px;
         }
 
@@ -270,7 +270,7 @@ export default function App() {
         .ku-card {
           background:var(--surface);
           border:1px solid rgba(45,140,78,.2);
-          border-radius:20px;padding:32px 24px;text-align:center;
+          border-radius:22px;padding:36px 28px;text-align:center;
           position:relative;overflow:hidden;cursor:default;
           transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .3s,box-shadow .4s;
           animation:cardIn .7s cubic-bezier(.16,1,.3,1) both;
