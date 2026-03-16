@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 const students = [
-  { name: 'Prompitchaya Lertwattanakitti', id: '6630251377', role: 'Frontend Developer',  icon: '⚡' },
-  { name: 'Natthapong Chanabun',           id: '6630251113', role: 'Backend Developer',   icon: '🛠' },
-  { name: 'Peeraphas Aitha',               id: '6630251393', role: 'DevOps Engineer',     icon: '🔧' },
-  { name: 'Pipat Poltree',                 id: '6630251172', role: 'Full Stack Developer', icon: '🚀' },
+  { name: 'Prompitchaya Lertwattanakitti', id: '6630251377', role: 'Frontend Developer',  icon: '⚡', image: '/ptc.png' },
+  { name: 'Natthapong Chanabun',           id: '6630251113', role: 'Backend Developer',   icon: '🛠', image: '/dy.png' },
+  { name: 'Peeraphas Aitha',               id: '6630251393', role: 'DevOps Engineer',     icon: '🔧', image: '/Time.png' },
+  { name: 'Pipat Poltree',                 id: '6630251172', role: 'Full Stack Developer', icon: '🚀', image: '/peach.png' },
 ];
 
 /* ── Particle canvas ─────────────────────────────────── */
@@ -81,13 +81,6 @@ function ParticleCanvas() {
 /* ── Student card with 3-D tilt ──────────────────────── */
 function StudentCard({ student, index }) {
   const cardRef = useRef(null);
-  const [profileImg, setProfileImg] = useState(null);
-  const profileInputRef = useRef(null);
-
-  const handleProfileUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) setProfileImg(URL.createObjectURL(file));
-  };
 
   const handleMouseMove = (e) => {
     const card = cardRef.current;
@@ -114,23 +107,10 @@ function StudentCard({ student, index }) {
 
       <div
         className="ku-avatar"
-        onClick={() => profileInputRef.current.click()}
-        title="คลิกเพื่อเปลี่ยนรูปโปรไฟล์"
-        style={{ cursor: 'pointer' }}
+        title="รูปโปรไฟล์คงที่"
       >
-        {profileImg
-          ? <img src={profileImg} alt={student.name} className="ku-avatar-img" />
-          : student.name.charAt(0)
-        }
+        <img src={student.image} alt={student.name} className="ku-avatar-img" />
         <span className="ku-avatar-ring" />
-        <span className="ku-upload-hint">📷</span>
-        <input
-          ref={profileInputRef}
-          type="file"
-          accept="image/*"
-          style={{ display: 'none' }}
-          onChange={handleProfileUpload}
-        />
       </div>
 
       <p className="ku-name">{student.name}</p>
@@ -147,14 +127,6 @@ function StudentCard({ student, index }) {
 
 /* ── Main App ─────────────────────────────────────────── */
 export default function App() {
-  const [logoImg, setLogoImg] = useState(null);
-  const logoInputRef = useRef(null);
-
-  const handleLogoUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) setLogoImg(URL.createObjectURL(file));
-  };
-
   return (
     <>
       {/* ── Google Fonts ── */}
@@ -427,22 +399,9 @@ export default function App() {
         <header className="ku-header">
           <div
             className="ku-logo-ring"
-            onClick={() => logoInputRef.current.click()}
-            title="คลิกเพื่อเปลี่ยนโลโก้"
-            style={{ cursor: 'pointer' }}
+            title="โลโก้คงที่"
           >
-            {logoImg
-              ? <img src={logoImg} alt="Logo" className="ku-logo-img" />
-              : <span className="ku-logo-emoji">🌿</span>
-            }
-            <span className="ku-upload-hint">📷</span>
-            <input
-              ref={logoInputRef}
-              type="file"
-              accept="image/*"
-              style={{ display: 'none' }}
-              onChange={handleLogoUpload}
-            />
+            <img src="/KU.png" alt="Kasetsart University Logo" className="ku-logo-img" />
           </div>
           <div className="ku-badge">Kasetsart University</div>
           <h1 className="ku-h1">Student Dev Team</h1>
