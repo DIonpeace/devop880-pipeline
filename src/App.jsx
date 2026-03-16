@@ -207,7 +207,7 @@ export default function App() {
 
         /* Logo ring */
         .ku-logo-ring {
-          width:100px;height:100px;margin:0 auto 28px;
+          width:140px;height:140px;margin:0 auto 32px;
           position:relative;display:flex;align-items:center;justify-content:center;
         }
         .ku-logo-ring::before {
@@ -306,8 +306,8 @@ export default function App() {
 
         /* Avatar */
         .ku-avatar {
-          width:72px;height:72px;border-radius:50%;
-          margin:0 auto 20px;display:flex;align-items:center;justify-content:center;
+          width:110px;height:110px;border-radius:50%;
+          margin:6px auto 24px;display:flex;align-items:center;justify-content:center;
           font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;
           position:relative;
           background:linear-gradient(135deg,var(--ku-green),var(--ku-light));
@@ -372,7 +372,7 @@ export default function App() {
         /* Uploaded images */
         .ku-logo-img {
           position:relative;z-index:2;
-          width:80px;height:80px;border-radius:50%;object-fit:cover;
+          width:116px;height:116px;border-radius:50%;object-fit:cover;
         }
         .ku-avatar-img {
           position:absolute;inset:0;
