@@ -262,7 +262,7 @@ export default function App() {
         /* Grid */
         .ku-grid-cards {
           display:grid;
-          grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
+          grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
           gap:20px; margin-top:8px;
         }
 
@@ -270,7 +270,7 @@ export default function App() {
         .ku-card {
           background:var(--surface);
           border:1px solid rgba(45,140,78,.2);
-          border-radius:22px;padding:36px 28px;text-align:center;
+          border-radius:24px;padding:40px 30px;text-align:center;
           position:relative;overflow:hidden;cursor:default;
           transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .3s,box-shadow .4s;
           animation:cardIn .7s cubic-bezier(.16,1,.3,1) both;
@@ -306,8 +306,8 @@ export default function App() {
 
         /* Avatar */
         .ku-avatar {
-          width:110px;height:110px;border-radius:50%;
-          margin:6px auto 24px;display:flex;align-items:center;justify-content:center;
+          width:150px;height:150px;border-radius:50%;
+          margin:8px auto 26px;display:flex;align-items:center;justify-content:center;
           font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;
           position:relative;
           background:linear-gradient(135deg,var(--ku-green),var(--ku-light));
